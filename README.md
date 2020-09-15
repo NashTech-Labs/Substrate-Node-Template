@@ -1,71 +1,39 @@
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+# Substrate based PoE Application
 
-# User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+This templeate is based on tutorial provided by Substrate.   
 
-# Generated files
-.idea/**/contentModel.xml
+## Building
 
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+### Install Rust
 
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
 
-# Gradle and Maven with auto-import
-# When using Gradle or Maven with auto-import, you should exclude module files,
-# since they will be recreated, and may cause churn.  Uncomment if using
-# auto-import.
-# .idea/artifacts
-# .idea/compiler.xml
-# .idea/jarRepositories.xml
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
-# *.iml
-# *.ipr
+```bash
+$ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+```
+### Install Substrate
+```bash
+curl https://getsubstrate.io -sSf | bash -s -- --fast
+```
 
-# CMake
-cmake-build-*/
+## Compiling Template
 
-# Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+1. Clone the Template
+```bash
+$ git clone https://github.com/knoldus/Substrate-Node-Template.git
+```
+2. Initialize your WebAssembly build environment
+```bash
+source ~/.cargo/env
 
-# File-based project format
-*.iws
+rustup update nightly
+rustup update stable
 
-# IntelliJ
-out/
+rustup target add wasm32-unknown-unknown --toolchain nightly
+```
+3. Compile the Node Template
+```bash
+cd Substrate-Node-Template/
+cargo build --release
+```
 
-# mpeltonen/sbt-idea plugin
-.idea_modules/
 
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Cursive Clojure plugin
-.idea/replstate.xml
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-
-# Editor-based Rest Client
-.idea/httpRequests
-
-# Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
